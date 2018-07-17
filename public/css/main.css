@@ -1,0 +1,11 @@
+::-webkit-scrollbar {
+    display: none;
+    }
+
+.field:hover {
+    cursor: pointer;
+}
+
+.hoverBackground {
+    background-color: rgb(219, 255, 255)
+}

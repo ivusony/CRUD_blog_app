@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.css" />
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <script src="/lib/jQuery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.js"></script>
+</head>
+<body>
+	<!-- DISPLAYING POSTS -->
+	<div class="ui centered grid" >
+		
+		<div class="six wide tablet eight wide computer column" id="output">
+			<h1>Simple CRUD SPA blogging app</h1>
+			<% data.forEach(el=>{ %>
+				<div class="field" id="<%= el._id %>">
+						<br>
+						<br>
+						<h2><%= el.title %></h2>
+						
+							<img class="ui fluid image" src="<%= el.url %>">
+						<br>
+						<p style="text-align: justify;"><%= el.text %></p>
+						<br>
+						
+						<hr>
+				</div>
+			<% }) %>
+			
+		</div>
+	</div>
+	<div class="ui centered grid">
+		<div class="six wide tablet eight wide computer column">
+			<button class="ui fluid  green button" id="addnewblog">Add blog</button>
+		</div>
+	</div>
+
+    <div class="ui basic modal grid" id="input">
+    	<h1>Add new blog</h1>
+  			<div class="ui form">
+  				<label>Blog title</label>
+  				<input type="text" id="blogTitle" placeholder="" required>	
+				<label>Image URL</label>
+  				<input type="text" id="imgUrl" placeholder="" required>
+			    <label>Text</label>
+			    <textarea style="resize: none;" id="blogText" required></textarea>
+			    <div class="ui green fluid ok  button" id="confirm" >
+			    	<i class="checkmark icon"></i>
+			    </div>
+			</div>
+			<br>
+	</div>
+
+	<div class="ui basic modal grid" id="edit">
+		<h1>Edit blog</h1>
+  			<div class="ui form">
+  				<label>Blog title</label>
+  				<input type="text" id="blogTitle">	
+				<label>Image URL</label>
+  				<input type="text" id="imgUrl">
+			    <label>Text</label>
+			    <textarea style="resize: none;" id="blogText"></textarea>
+			    <div class="ui green fluid ok  button" id="update" >
+			    	UPDATE BLOG
+			    </div>
+			    <div class="ui red fluid cancel  button" id="delete" >
+			    	DELETE BLOG
+			    </div>
+			</div>
+			<br>
+	</div>
+    
+    <script src="/js/landing.js"></script>
+    <script src="/js/style.js"></script>
+    <script src="/js/editBlog.js"></script>
+</body>
+</html>
