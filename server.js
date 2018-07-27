@@ -20,6 +20,8 @@ mongoose.connect('mongodb://admin:admin1234@ds016128.mlab.com:16128/blog_app', {
 })
 
 
+const User = require('./mongodb_models/user.js');
+
 
 //importing controllers
 const landing = require('./controllers/landing');
@@ -39,8 +41,19 @@ app.use(bodyParser.urlencoded({extended: true}));
 //static folder setup
 app.use(express.static('./public'));
 
+//PASSPORT
 
-      
+app.use(expressSession({
+    secret: 'Radulov',
+    resave: false,
+    saveUninitialized: false
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 auth(app);
 landing(app);

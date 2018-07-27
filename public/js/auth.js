@@ -16,10 +16,16 @@
                 url: '/register',
                 dataContent: "application/json",
                 data: {
-                    name: $('#regName').val(),
-                    email: $('#regEmail').val(),
                     username: $('#regUsername').val(),
                     password: $('#regPassword').val() 
+                },
+                statusCode: {
+                    200: function(){
+                        window.location.href = '/';
+                    },
+                    400: function(){
+                        alert('Username taken!')
+                    }
                 }
             })
             $('#registerModal').modal('hide');
@@ -36,6 +42,15 @@
                 data: {
                     username: $('#loginUsername').val(),
                     password: $('#loginPassword').val() 
+                },
+                statusCode: {
+                    404: function() {
+                        alert( "page not found" );
+                      },
+                    200: function(){
+                        console.log('Status code 200');
+                        window.location.href = '/';
+                    }  
                 }
             })
         })
