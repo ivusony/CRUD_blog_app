@@ -13,12 +13,14 @@
 
             $.ajax({
                 type: "GET",
-                url: '/' + _id,
+                url: '/blogs/' + _id,
                 dataContent: "application/json",
                 data: JSON.stringify(_id),
                 success: function(data){
+                    $('#edit').find('#header').text('Edit ' + data[0].title);
                     $('#edit').find('#blogTitle').val(data[0].title).prop('disabled', true);
                     $('#edit').find('#imgUrl').val(data[0].url).prop('disabled', true);
+                    $('#edit').find('#img').attr('src', data[0].url);
                     $('#edit').find('#blogText').val(data[0].text);
                 }
             })
@@ -35,11 +37,11 @@
             }
             $.ajax({
                 type: "PUT",
-                url: '/' + _id,
+                url: '/blogs/' + _id,
                 dataContent: "application/json",
                 data: dataObj,
                 success: function(updated){
-                    $('#'+_id).html('<div class="field" id="' + updated._id +'"><h2>' + updated.title + '</h2><img class="ui fluid image" src="' + updated.url + '"><br><p>' + updated.text + '</p><br><hr></div');
+                    $('#'+_id).html('<div class="field" id="' + updated._id +'"><h2>' + updated.title + '</h2><img class="ui fluid image" src="' + updated.url + '"><br><p>' + updated.text + '</p><br><div class="ui horizontal divider">RESTful blog SPA</div></div');
                 }
             })
         })
@@ -49,7 +51,7 @@
         deleteBtn.on('click', function(){
             $.ajax({
                 type: "DELETE",
-                url: '/' + _id,
+                url: '/blogs/' + _id,
                 dataContent: "application/json",
                 data: _id,
                 success: function(id){

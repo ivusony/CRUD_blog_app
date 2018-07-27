@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>RESTful blog app</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.css" />
     <link rel="stylesheet" type="text/css" href="/css/main.css">
@@ -12,10 +12,17 @@
 </head>
 <body>
 	<!-- DISPLAYING POSTS -->
+	<h1 class="ui center inverted aligned icon header" style="background-color: rgb(48, 48, 48); padding: 0.5em">
+		 <i class="circular blogger b icon"></i>
+		  				nodejs/express/crud-RESTful/mongoDB-mongoose Blog SPA
+
+	</h1>
+	
+
 	<div class="ui centered grid" >
 		
 		<div class="six wide tablet eight wide computer column" id="output">
-			<h1>Simple CRUD SPA blogging app</h1>
+			
 			<% data.forEach(el=>{ %>
 				<div class="field" id="<%= el._id %>">
 						<br>
@@ -27,7 +34,9 @@
 						<p style="text-align: justify;"><%= el.text %></p>
 						<br>
 						
-						<hr>
+						<div class="ui horizontal divider">
+    						RESTful blog SPA
+  						</div>
 				</div>
 			<% }) %>
 			
@@ -35,7 +44,7 @@
 	</div>
 	<div class="ui centered grid">
 		<div class="six wide tablet eight wide computer column">
-			<button class="ui fluid  green button" id="addnewblog">Add blog</button>
+			<button class="ui fluid  inverted blue button" id="addnewblog">Add new blog</button>
 		</div>
 	</div>
 
@@ -48,7 +57,7 @@
   				<input type="text" id="imgUrl" placeholder="" required>
 			    <label>Text</label>
 			    <textarea style="resize: none;" id="blogText" required></textarea>
-			    <div class="ui green fluid ok  button" id="confirm" >
+			    <div class="ui blue fluid ok  button" id="confirm" >
 			    	<i class="checkmark icon"></i>
 			    </div>
 			</div>
@@ -56,18 +65,29 @@
 	</div>
 
 	<div class="ui basic modal grid" id="edit">
-		<h1>Edit blog</h1>
+		<h1 id="header">Edit blog</h1>
   			<div class="ui form">
   				<label>Blog title</label>
-  				<input type="text" id="blogTitle">	
-				<label>Image URL</label>
-  				<input type="text" id="imgUrl">
+  				<input type="text" id="blogTitle">
+  				<div class="ui grid">
+	  				<div class="six wide column">
+	  					<label>URL</label>
+  						<input type="text" id="imgUrl">
+	  				</div>
+	  				<div class="ten wide column">
+	  					<label>Image</label>
+  						<img src="" id="img" class="ui centered large image">
+	  				</div>
+				</div>
 			    <label>Text</label>
 			    <textarea style="resize: none;" id="blogText"></textarea>
-			    <div class="ui green fluid ok  button" id="update" >
+			    <br>
+			    <br>	
+			    <div class="ui blue fluid inverted ok  button" id="update" >
 			    	UPDATE BLOG
 			    </div>
-			    <div class="ui red fluid cancel  button" id="delete" >
+			  		<br>	
+			    <div class="ui red fluid inverted cancel  button" id="delete" >
 			    	DELETE BLOG
 			    </div>
 			</div>

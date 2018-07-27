@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RESTful blog app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.css" />
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <script src="/lib/jQuery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.js"></script>
+</head>
+<body>
+	<div class="ui centered grid">
+		<div class="four wide column">
+			<div class="ui form">
+				<h2 class="centered">Login</h2>
+				<div class="field">
+	    			<label>Username</label>
+	    			<input type="text" placeholder="" id="loginUsername" required>
+	  			</div>
+	  			<div class="field">
+	    			<label>Password</label>
+	    			<input type="password" placeholder="" id="loginPassword" required>
+	  			</div>
+	  			<div class="ui fluid blue submit button" id="login">Login</div>
+	  			<div class="ui horizontal divider">
+    						or
+  				</div>
+  				<div class="ui fluid green submit button" id="register">Register</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="ui basic modal centered grid" id="registerModal">
+		<div class=" eight wide column">
+			<h2 class="centered">Register</h2>
+			<div class="ui  form">
+	  			<div class="field">
+	    			<input type="text" placeholder="Name" id="regName" required>
+	  			</div>
+	  			<div class="field">
+	    			<input type="email" placeholder="E-mail" id="regEmail" required>
+	  			</div>
+	  			<div class="field">
+	    			<input type="text" placeholder="Username" id="regUsername" required>
+	  			</div>
+	  			<div class="field">
+	    			<input type="password" placeholder="Password" id="regPassword" required>
+	  			</div>
+	  			<div class="field">
+	    			<input type="password" placeholder="Repeat password" required>
+	  			</div>
+	  			<div class="ui fluid blue submit button" id="registerNewUser">Submit</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/js/auth.js"></script>
+</body>
+
+</html>

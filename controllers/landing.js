@@ -2,7 +2,11 @@ module.exports = function(app){
 
     const Blog = require('../mongodb_models/blog.js');
 
-    app.get('/', function(req, res){
+    app.get('/', (req, res, next)=>{
+        res.redirect('/blogs')
+    })
+
+    app.get('/blogs', function(req, res){
         Blog.find({}, function(err, blogs){
             if (err) {
                 console.log('Error retrieving data from DB, ' + err)
@@ -14,10 +18,11 @@ module.exports = function(app){
         })
     })
     //save new blog to DB
-    app.post('/', function(req, res){
+    app.post('/blogs', function(req, res){
         Blog.create(req.body, function(err, blog){
             if (err) {
-                console.log('Error saving data to DB, ' + err)
+                res.json(err);
+                console.log('Error saving data to DB, ' + err);
             }else{
                 console.log('Blog has been saved!');
                 res.json(blog);
@@ -26,7 +31,7 @@ module.exports = function(app){
       
     })
     //get blog from DB to edit
-    app.get('/:id', function(req, res){
+    app.get('/blogs/:id', function(req, res){
         Blog.find({_id: req.params.id}, function(err, blog){
             if (err) {
                 console.log('Cannot find blog: ' + err)
@@ -37,7 +42,7 @@ module.exports = function(app){
         });
     })
     //update actual blog by id
-    app.put('/:id', function(req, res){
+    app.put('/blogs/:id', function(req, res){
         console.log(req.params.id);
         Blog.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true},  function(err, updated){
             if(err){
@@ -49,7 +54,7 @@ module.exports = function(app){
         })
     })
     //delete blog by id
-    app.delete('/:id', function(req, res){
+    app.delete('/blogs/:id', function(req, res){
         Blog.findByIdAndRemove({_id:req.params.id}, function(err, data){
             if (err) {
                 console.log('Cannot remove blog: ' + err)
