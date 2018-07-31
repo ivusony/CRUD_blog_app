@@ -2,14 +2,15 @@ module.exports = function(app){
 
     const Blog = require('../mongodb_models/blog.js');
 
-    app.get('/', (req, res, next)=>{
-        res.redirect('/blogs')
-    })
+    // app.get('/', (req, res, next)=>{
+    //     res.redirect('/blogs')
+    // })
 
     app.get('/blogs', function(req, res){
         Blog.find({}, function(err, blogs){
             if (err) {
-                console.log('Error retrieving data from DB, ' + err)
+                console.log('Error retrieving data from DB, ' + err);
+                res.render('register');
             }else{
                 res.render('landing', {
                     data: blogs

@@ -10,19 +10,21 @@ module.exports = function(app){
 
     //Show form
 
-    app.get('/auth', (req, res)=>{
-        res.render('auth');
+    app.get('/login', (req, res)=>{
+        res.render('login');
+    })
+
+    app.get('/register', (req, res)=>{
+        res.render('register');
     })
 
     app.post('/register', function(req, res){
+        console.log(req.body);
         User.register(new User({username: req.body.username}), req.body.password, function(err, user){
             if(err){
-                res.status(400).send(err);
-                return
+                console.log(err)
             }else{
-                passport.authenticate('local')(req, res, function(){
-                    res.status(200).send({ success: 'success'});
-                })
+                res.redirect('/login')
             }
         })
     })
@@ -30,10 +32,10 @@ module.exports = function(app){
     app.post('/login', passport.authenticate('local', 
     {
         successRedirect: '/blogs',
-        failureRedirect: '/auth'
+        failureRedirect: '/login'
     }
     ),function(req, res){
-        res.status(200).send({ error: "boo:(" });
+        console.log(req.body)
     })
 
 }

@@ -1,0 +1,24 @@
+<% include partials/header.ejs %>
+
+<div class="ui centered grid" id="registerModal">
+    <div class=" four wide column">
+        <h2 class="centered">Register</h2>
+        <div class="ui  form">
+            <form action="/register" method="POST">
+              <div class="field">
+                <input type="text" placeholder="Username" name="username" id="regUsername" required>
+              </div>
+              <div class="field">
+                <input type="password" placeholder="Password" name="password" id="regPassword" required>
+              </div>
+              <div class="field">
+                <input type="password" placeholder="Repeat password" >
+              </div>
+              <button type="submit" class="ui green inverted button">Register</button>
+             </form> 
+        </div>
+    </div>
+</div>
+
+
+<% include partials/footer.ejs %>

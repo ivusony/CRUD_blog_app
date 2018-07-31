@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>RESTful blog app</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.css" />
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <script src="/lib/jQuery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.js"></script>
-</head>
-<body>
+<% include partials/header.ejs %>
+
 	<!-- DISPLAYING POSTS -->
 	<h1 class="ui center inverted aligned icon header" style="background-color: rgb(48, 48, 48); padding: 0.5em">
 		 <i class="circular blogger b icon"></i>
 		  				nodejs/express/crud-RESTful/mongoDB-mongoose Blog SPA
-
+		<div>
+			<button class="ui inverted button">Logout</button>
+		</div>
+							  
 	</h1>
 	
 
@@ -94,8 +86,8 @@
 			<br>
 	</div>
     
-    <script src="/js/landing.js"></script>
-    <script src="/js/style.js"></script>
-    <script src="/js/editBlog.js"></script>
-</body>
-</html>
+  
+
+
+<% include partials/footer.ejs %>
+	
