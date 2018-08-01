@@ -6,7 +6,9 @@ module.exports = function(app){
     //     res.redirect('/blogs')
     // })
 
-    app.get('/blogs', function(req, res){
+  
+
+    app.get('/blogs',isLoggedIn , function(req, res){
         Blog.find({}, function(err, blogs){
             if (err) {
                 console.log('Error retrieving data from DB, ' + err);
@@ -19,7 +21,7 @@ module.exports = function(app){
         })
     })
     //save new blog to DB
-    app.post('/blogs', function(req, res){
+    app.post('/blogs',function(req, res){
         Blog.create(req.body, function(err, blog){
             if (err) {
                 res.json(err);
@@ -32,7 +34,7 @@ module.exports = function(app){
       
     })
     //get blog from DB to edit
-    app.get('/blogs/:id', function(req, res){
+    app.get('/blogs/:id', isLoggedIn , function(req, res){
         Blog.find({_id: req.params.id}, function(err, blog){
             if (err) {
                 console.log('Cannot find blog: ' + err)
@@ -64,5 +66,14 @@ module.exports = function(app){
             }
         })
     })
+
+
+    function isLoggedIn(req, res, next){
+        if(req.isAuthenticated()){
+            return next()
+        }else{
+            res.render('login')
+        }
+    }
    
 }

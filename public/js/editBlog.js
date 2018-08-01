@@ -5,6 +5,7 @@
             deleteBtn = $('#delete');
 
         let _id;
+ 
 
         //open edit modal windows
         $('body').on('click','.field' ,function(){
@@ -41,7 +42,7 @@
                 dataContent: "application/json",
                 data: dataObj,
                 success: function(updated){
-                    $('#'+_id).html('<div class="field" id="' + updated._id +'"><h2>' + updated.title + '</h2><img class="ui fluid image" src="' + updated.url + '"><br><p>' + updated.text + '</p><br><div class="ui horizontal divider">RESTful blog SPA</div></div');
+                    $('#'+_id).html('<div class="field" id="' + updated._id +'"><h4>' + updated.title + '</h4><img class="ui fluid image" src="' + updated.url + '"><br><p>' + updated.text + '</p><br><div class="ui horizontal divider">RESTful blog SPA</div></div');
                 }
             })
         })

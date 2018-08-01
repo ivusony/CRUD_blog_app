@@ -3,9 +3,13 @@
 	<!-- DISPLAYING POSTS -->
 	<h1 class="ui center inverted aligned icon header" style="background-color: rgb(48, 48, 48); padding: 0.5em">
 		 <i class="circular blogger b icon"></i>
-		  				nodejs/express/crud-RESTful/mongoDB-mongoose Blog SPA
+		  				Simple Blogging App
 		<div>
-			<button class="ui inverted button">Logout</button>
+			<form action="/logout" method="GET">
+				
+				<button class="ui inverted button">Logout</button>
+			</form>
+			<button class="ui inverted button">My Blogs</button>
 		</div>
 							  
 	</h1>
@@ -13,13 +17,11 @@
 
 	<div class="ui centered grid" >
 		
-		<div class="six wide tablet eight wide computer column" id="output">
+		<div class="sixteen wide tablet eight wide computer column" id="output">
 			
 			<% data.forEach(el=>{ %>
 				<div class="field" id="<%= el._id %>">
-						<br>
-						<br>
-						<h2><%= el.title %></h2>
+						<h4 class="computer only"><%= el.title %></h4>
 						
 							<img class="ui fluid image" src="<%= el.url %>">
 						<br>
@@ -59,20 +61,28 @@
 	<div class="ui basic modal grid" id="edit">
 		<h1 id="header">Edit blog</h1>
   			<div class="ui form">
-  				<label>Blog title</label>
-  				<input type="text" id="blogTitle">
-  				<div class="ui grid">
-	  				<div class="six wide column">
-	  					<label>URL</label>
-  						<input type="text" id="imgUrl">
-	  				</div>
-	  				<div class="ten wide column">
-	  					<label>Image</label>
-  						<img src="" id="img" class="ui centered large image">
-	  				</div>
-				</div>
-			    <label>Text</label>
-			    <textarea style="resize: none;" id="blogText"></textarea>
+					<div class="four wide column">
+						<label>Blog title</label>
+						<input type="text" id="blogTitle">
+						<label>URL</label>
+						<input type="text" id="imgUrl">
+						<label>Image</label>
+						<img src="" id="img" class="ui centered large image">
+						<label>Text</label>
+						<textarea style="resize: none;" id="blogText"></textarea>
+					</div>
+					<div class="ui horizontal inverted divider">
+    						COMMENTS
+  					</div>
+					
+					<div class="four wide column">
+						
+
+					</div>
+						
+			
+  			
+			    
 			    <br>
 			    <br>	
 			    <div class="ui blue fluid inverted ok  button" id="update" >

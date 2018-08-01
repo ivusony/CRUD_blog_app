@@ -38,4 +38,19 @@ module.exports = function(app){
         console.log(req.body)
     })
 
+
+    app.get('/logout', function(req, res){
+        req.logout();
+        res.redirect('/login');
+    });
+
 }
+
+
+
+
+
+
+
+
+

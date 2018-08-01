@@ -36,7 +36,7 @@
                            text: blogText.val() 
                        },
                        success: function(data){
-                           $('#output').append('<div class="field" id="' + data._id +'"><h2>' + data.title + '</h2><img class="ui fluid image" src="' + data.url + '"><br><p>' + data.text + '</p><br><div class="ui horizontal divider">RESTful blog SPA</div></div');
+                           $('#output').append('<div class="field" id="' + data._id +'"><h4>' + data.title + '</h4><img class="ui fluid image" src="' + data.url + '"><br><p>' + data.text + '</p><br><div class="ui horizontal divider">RESTful blog SPA</div></div');
                            blogTitle.val('');                                                                                                                                   
                            imgUrl.val('');
                            blogText.val('');
