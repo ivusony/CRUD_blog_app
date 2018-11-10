@@ -2,9 +2,9 @@ module.exports = function(app){
 
     const Blog = require('../mongodb_models/blog.js');
 
-    // app.get('/', (req, res, next)=>{
-    //     res.redirect('/blogs')
-    // })
+    app.get('/', (req, res, next)=>{
+        res.redirect('/blogs')
+    })
 
   
 
